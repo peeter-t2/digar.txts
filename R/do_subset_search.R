@@ -5,6 +5,7 @@
 #' @param searchfile Write the filename to store the results in.
 #' @param subset Needs subset to be specified
 #' @keywords data
+#' @import data.table
 #' @export
 #' @examples
 #' do_subset_search("oskar kallas","results1.txt",subset)

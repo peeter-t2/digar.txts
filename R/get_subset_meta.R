@@ -3,6 +3,7 @@
 #' This function allows you to express your love of cats.
 #' @param subset Needs to get the subset from the subset.
 #' @keywords data
+#' @import data.table
 #' @export
 #' @examples
 #' subset_meta <- get_subset_meta(subset)

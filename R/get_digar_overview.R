@@ -2,6 +2,7 @@
 #'
 #' This function gets the most recent metadata from the file servers and stores it as a variable
 #' @keywords data
+#' @import data.table
 #' @export
 #' @examples
 #' all_issues <- get_digar_overview()
