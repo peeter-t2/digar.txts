@@ -10,8 +10,9 @@
 
 get_subset_meta <- function(subset){
   metafiles <- subset[zippath_sections!="",unique(zippath_sections_meta)]
+  collectionname <- "/gpfs/hpc/projects/digar_txt/text"
   metafilelist <- paste0(collectionname,"/meta_sections/", metafiles)
-  subset_meta <- data.table::rbindlist(lapply(paste0("unzip -p ",metafilelist), data.table::fread,fill=T),idcol=T)
+  subset_meta <- data.table::rbindlist(lapply(paste0("unzip -p ",metafilelist), data.table::fread,cmd=.,fill=T),idcol=T)
   system(paste0('printf "setupmeta \t $USER \t got corpus meta ', length(metafilelist) ,' files \t" >> /gpfs/hpc/projects/digar_txt/appendOnly_testDir/log1.txt; date +"%Y-%m-%d %T" >> /gpfs/hpc/projects/digar_txt/appendOnly_testDir/log1.txt'))
   return(subset_meta)
 }
