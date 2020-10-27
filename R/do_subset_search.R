@@ -3,14 +3,17 @@
 #' This function allows you to express your love of cats.
 #' @param searchterm Write the search term here. By default it is read as regular expressions.
 #' @param searchfile Write the filename to store the results in.
-#' @param filelist It needs the filelist for raw texts as input too.
+#' @param subset Needs subset to be specified
 #' @keywords data
 #' @export
 #' @examples
-#' do_corpus_search("oskar kallas","results1.txt")
+#' do_subset_search("oskar kallas","results1.txt",subset)
 #'
 
-do_corpus_search <- function(searchterm = "oskar kallas",searchfile = "results1.txt",filelist=filelist){
+do_subset_search <- function(searchterm = "oskar kallas",searchfile = "oskarkallas.txt",subset){
+  files <- subset[zippath_sections!="",unique(zippath_sections)]
+  collectionname <- "/gpfs/hpc/projects/digar_txt/text"
+  filelist <- paste0(collectionname,"/text_sections/", files)
   if(file.exists(searchfile)){system(paste0("rm ",searchfile))}
   for (seq in 0:floor(length(filelist)/1000)){
     system(paste0("for file in ", paste0(filelist[(1+1000*seq):min(length(filelist),(1000*(seq+1)))],collapse=" "),"; do unzip -c $file | grep -iE '",searchterm,"' >> ",searchfile,"; done"))
