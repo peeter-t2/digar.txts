@@ -15,6 +15,6 @@ RoxygenNote: 7.1.1.9000
 Depends: 
     R (>= 3.4)
 Imports:
-    data.table,
-    stringr
+    data.table (>= 1.01.0),
+    stringr (>= 1.2.0)
     
