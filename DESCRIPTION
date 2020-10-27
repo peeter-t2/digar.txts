@@ -1,0 +1,20 @@
+Package: digar.txts
+Title: Gets and searches texts from digar.txts
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Peeter",
+           family = "Tinits",
+           role = c("aut", "cre"),
+           email = "peeter.tinits@nlib.ee",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package gives an easy access point to the dea.digar.ee texts available on the file storage. You need a username to the servers to access the files.
+License: CC-BY-4.0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1.9000
+Depends: 
+    R (>= 3.4)
+Imports:
+    data.table,
+    stringr
+    
