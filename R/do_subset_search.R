@@ -1,6 +1,6 @@
 #' Do corpus search
 #'
-#' This function allows you to express your love of cats.
+#' This function performs a search within the subset of the corpus files
 #' @param searchterm Write the search term here. By default it is read as regular expressions.
 #' @param searchfile Write the filename to store the results in.
 #' @param subset Needs subset to be specified

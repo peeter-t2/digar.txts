@@ -10,7 +10,7 @@ get_subset_meta(subset)
 \item{subset}{Needs to get the subset from the subset.}
 }
 \description{
-This function allows you to express your love of cats.
+This function gets the metadata for the subset. Metadata is made into chunks by decade and publication.
 }
 \examples{
 subset_meta <- get_subset_meta(subset)

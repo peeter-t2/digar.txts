@@ -18,7 +18,7 @@ do_subset_search(
 \item{subset}{Needs subset to be specified}
 }
 \description{
-This function allows you to express your love of cats.
+This function performs a search within the subset of the corpus files
 }
 \examples{
 do_subset_search("oskar kallas","results1.txt",subset)

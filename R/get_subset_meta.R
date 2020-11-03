@@ -1,6 +1,6 @@
 #' Get corpus metadata
 #'
-#' This function allows you to express your love of cats.
+#' This function gets the metadata for the subset. Metadata is made into chunks by decade and publication.
 #' @param subset Needs to get the subset from the subset.
 #' @keywords data
 #' @import data.table
