@@ -10,6 +10,7 @@
 #'
 
 get_subset_meta <- function(subset){
+  subset <- data.table(subset)
   metafiles <- subset[zippath_sections!="",unique(zippath_sections_meta)]
   collectionname <- "/gpfs/hpc/projects/digar_txt/text"
   metafilelist <- paste0(collectionname,"/meta_sections/", metafiles)

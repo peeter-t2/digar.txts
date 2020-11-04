@@ -12,6 +12,7 @@
 #'
 
 do_subset_search <- function(searchterm = "oskar kallas",searchfile = "oskarkallas.txt",subset){
+  subset <- data.table(subset)
   files <- subset[zippath_sections!="",unique(zippath_sections)]
   collectionname <- "/gpfs/hpc/projects/digar_txt/text"
   filelist <- paste0(collectionname,"/text_sections/", files)
