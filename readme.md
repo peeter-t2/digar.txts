@@ -8,7 +8,7 @@ Use the following examples to use.
 
 #Since the JypiterLab does not have access to all the files, we specify a local folder for our packages.
 dir.create("R_pckg")
-remotes::install_github("peeter-t2/digar.txts",lib="~/R_pckg2/",upgrade="never")
+remotes::install_github("peeter-t2/digar.txts",lib="~/R_pckg/",upgrade="never")
 ```
 
 ```
