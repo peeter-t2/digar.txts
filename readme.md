@@ -26,7 +26,7 @@ Build a custom subset through favourite tools.
 ```
 subset  <- all_issues %>%
     filter(DocumentType=="NEWSPAPER") %>%
-    filter(year>1920&year<1940) %>%
+    filter(year>1880&year<1940) %>%
     filter(keyid=="postimeesew")
 ```
 
