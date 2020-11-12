@@ -13,13 +13,19 @@
 
 do_subset_search <- function(searchterm = "oskar kallas",searchfile = "oskarkallas.txt",subset){
   subset <- data.table(subset)
+  mainpaper <- subset[,.N,keyid][order(-N)][1][,keyid]
+  mainpaper_issues <- subset[,.N,keyid][order(-N)][1][,N]
+  papers <- subset[,uniqueN(keyid)] -1
+  minyear <- subset[,(min(year))]
+  maxyear <- subset[,(max(year))]
+  nissues <- nrow(subset)
   files <- subset[zippath_sections!="",unique(zippath_sections)]
   collectionname <- "/gpfs/hpc/projects/digar_txt/text"
   filelist <- paste0(collectionname,"/text_sections/", files)
   if(file.exists(searchfile)){system(paste0("rm ",searchfile))}
   for (seq in 0:floor(length(filelist)/1000)){
     system(paste0("for file in ", paste0(filelist[(1+1000*seq):min(length(filelist),(1000*(seq+1)))],collapse=" "),"; do unzip -c $file | grep -iE '",searchterm,"' >> ",searchfile,"; done"))
-    system(paste0('printf "search \t $USER \t do search ', searchterm, ' in ' , length(filelist),' files:', nissues, " issues from", minyear, " to ", maxyear, " in ", mainpaper, " and ", papers, " other papers" ,'\t" >> /gpfs/hpc/projects/digar_txt/appendOnly_testDir/log1.txt; date +"%Y-%m-%d %T" >> /gpfs/hpc/projects/digar_txt/appendOnly_testDir/log1.txt'))
+    system(paste0('printf "search \t $USER \t do search ', searchterm, ' in ' , length(filelist),' files:', nissues, " issues from", minyear, " to ", maxyear, " in ", mainpaper, " (", mainpaper_issues, ")", " and ", papers, " other papers" ,'\t" >> /gpfs/hpc/projects/digar_txt/appendOnly_testDir/log1.txt; date +"%Y-%m-%d %T" >> /gpfs/hpc/projects/digar_txt/appendOnly_testDir/log1.txt'))
 
   }
 }
