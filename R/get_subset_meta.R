@@ -18,7 +18,7 @@ get_subset_meta <- function(subset){
   maxyear <- subset[,(max(year))]
   nissues <- nrow(subset)
   metafiles <- subset[zippath_sections!="",unique(zippath_sections_meta)]
-  collectionname <- "/gpfs/hpc/projects/digar_txt/text"
+  collectionname <- "/gpfs/space/projects/digar_txt/text"
   metafilelist <- paste0(collectionname,"/meta_sections/", metafiles)
   subset_meta <- data.table::rbindlist(lapply(paste0("unzip -p ",metafilelist), function(x) data.table::fread(cmd=x,fill=T)),idcol=T)
   system(paste0('printf "setupmeta \t $USER \t got corpus meta ', length(metafilelist) ,' files: ', nissues, ' issues from ', minyear, ' to ', maxyear, ' in ', mainpaper, ' (', mainpaper_issues, ')', ' and ', papers, ' other papers' ,' \t" >> /gpfs/space/projects/digar_txt/logs/log1.txt; date +"%Y-%m-%d %T" >> /gpfs/space/projects/digar_txt/logs/log1.txt'))
