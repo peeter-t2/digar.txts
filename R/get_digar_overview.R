@@ -9,8 +9,8 @@
 #'
 
 get_digar_overview <- function(){
-  all_issues <- data.table::fread("unzip -p /gpfs/hpc/projects/digar_txt/text/all_issues_access.zip",sep="\t")[access_now==T]
+  all_issues <- data.table::fread("unzip -p /gpfs/space/projects/digar_txt/text/all_issues_access.zip",sep="\t")[access_now==T]
   if(nrow(all_issues)>100000){print("Issue metadata read")}
-  system('printf "readmeta \t $USER \t read_all_issues_metadata \t" >> /gpfs/hpc/projects/digar_txt/logs/log1.txt; date +"%Y-%m-%d %T" >> /gpfs/hpc/projects/digar_txt/logs/log1.txt')
+  system('printf "readmeta \t $USER \t read_all_issues_metadata \t" >> /gpfs/space/projects/digar_txt/logs/log1.txt; date +"%Y-%m-%d %T" >> /gpfs/space/projects/digar_txt/logs/log1.txt')
   return(all_issues)
 }
