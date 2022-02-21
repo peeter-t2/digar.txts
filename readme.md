@@ -75,6 +75,24 @@ texts <- fread("lurich1.txt",header=F)[,.(id=V1,txt=V2)]
 concs <- get_concordances(searchterm="[Ll]urich",texts=texts,before=30,after=30,txt="txt",id="id")
 ```
 
+9) Note that many sources have not been segmented into artilces during digitization. On them both meta and text information need to be accessed on the page level, where files are located in a different folder. The sequence for pages would be:
+
+
+```
+subset2 <- all_issues %>%
+    filter(DocumentType=="NEWSPAPER") %>%
+    filter(year>1951&year<2002) %>%
+    filter(keyid=="stockholmstid")
+
+# The subset2 from stockholstid has 0 issues with section-level data, but 2178 issues with page-level data. In this case pages should be used. When combining sources with page and section sources, custom combinations can be made based on the question at hand. Note that pages data includes also the sections data when available, so using both at the same time can bias the results.
+# subset2 %>% filter(sections_exist==T) %>% nrow()
+# subset2 %>% filter(pages_exist==T) %>% nrow()
+
+subset_meta2 <- get_subset_meta(subset2, source="pages")
+
+do_subset_search(searchterm="eesti", searchfile="eesti1.txt",subset2, source="pages")
+```
+
 
 
 #### Convenience suggestion

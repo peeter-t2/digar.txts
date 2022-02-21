@@ -7,7 +7,8 @@
 do_subset_search(
   searchterm = "oskar kallas",
   searchfile = "oskarkallas.txt",
-  subset
+  subset,
+  source = "sections"
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ do_subset_search(
 \item{searchfile}{Write the filename to store the results in.}
 
 \item{subset}{Needs subset to be specified}
+
+\item{source}{Either "sections" or "pages" based on what kind of input is expected.}
 }
 \description{
 This function performs a search within the subset of the corpus files

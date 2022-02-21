@@ -1,6 +1,6 @@
 Package: digar.txts
 Title: Gets and searches texts from digar.txts
-Version: 0.0.0.9000
+Version: 0.0.0.9100
 Authors@R: 
     person(given = "Peeter",
            family = "Tinits",

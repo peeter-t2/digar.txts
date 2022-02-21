@@ -4,10 +4,12 @@
 \alias{get_subset_meta}
 \title{Get corpus metadata}
 \usage{
-get_subset_meta(subset)
+get_subset_meta(subset, source = "sections")
 }
 \arguments{
-\item{subset}{Needs to get the subset from the subset.}
+\item{subset}{Needs to get the subset metadata based on the subset.}
+
+\item{source}{Either "sections" or "pages" based on what kind of input is expected.}
 }
 \description{
 This function gets the metadata for the subset. Metadata is made into chunks by decade and publication.
