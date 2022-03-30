@@ -12,7 +12,7 @@
 #' do_subset_search("oskar kallas","results1.txt",subset)
 #'
 
-do_subset_search <- function(searchterm = "oskar kallas",searchfile = "oskarkallas.txt",subset, source="sections"){
+do_subset_search <- function(searchterm = "oskar kallas",searchfile = "oskarkallas.txt",subset, source="sections",type="text"){
   subset <- data.table(subset)
   mainpaper <- subset[,.N,keyid][order(-N)][1][,keyid]
   mainpaper_issues <- subset[,.N,keyid][order(-N)][1][,N]
@@ -24,6 +24,7 @@ do_subset_search <- function(searchterm = "oskar kallas",searchfile = "oskarkall
   files <- subset[zippath_sections!="",unique(zippath_sections)]
   collectionname <- "/gpfs/space/projects/digar_txt/text"
   filelist <- paste0(collectionname,"/text_sections/", files)
+  if(searchtype=="lemmas"){  filelist <- paste0(collectionname,"/lemmas_sections/", files)}
   if(file.exists(searchfile)){system(paste0("rm ",searchfile))}
   for (seq in 0:floor(length(filelist)/1000)){
     system(paste0("for file in ", paste0(filelist[(1+1000*seq):min(length(filelist),(1000*(seq+1)))],collapse=" "),"; do unzip -c $file | grep -iE '",searchterm,"' >> ",searchfile,"; done"))
@@ -35,6 +36,7 @@ do_subset_search <- function(searchterm = "oskar kallas",searchfile = "oskarkall
   files <- subset[zippath_pages!="",unique(zippath_pages)]
   collectionname <- "/gpfs/space/projects/digar_txt/text"
   filelist <- paste0(collectionname,"/text_pages/", files)
+  if(searchtype=="lemmas"){  filelist <- paste0(collectionname,"/lemmas_pages/", files)}
   if(file.exists(searchfile)){system(paste0("rm ",searchfile))}
   for (seq in 0:floor(length(filelist)/1000)){
     system(paste0("for file in ", paste0(filelist[(1+1000*seq):min(length(filelist),(1000*(seq+1)))],collapse=" "),"; do unzip -c $file | grep -iE '",searchterm,"' >> ",searchfile,"; done"))
