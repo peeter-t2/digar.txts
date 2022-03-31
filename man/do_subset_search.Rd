@@ -9,7 +9,7 @@ do_subset_search(
   searchfile = "oskarkallas.txt",
   subset,
   source = "sections",
-  type = "text"
+  searchtype = "text"
 )
 }
 \arguments{

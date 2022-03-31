@@ -12,7 +12,7 @@
 #' do_subset_search("oskar kallas","results1.txt",subset)
 #'
 
-do_subset_search <- function(searchterm = "oskar kallas",searchfile = "oskarkallas.txt",subset, source="sections",type="text"){
+do_subset_search <- function(searchterm = "oskar kallas",searchfile = "oskarkallas.txt",subset, source="sections",searchtype="text"){
   subset <- data.table(subset)
   mainpaper <- subset[,.N,keyid][order(-N)][1][,keyid]
   mainpaper_issues <- subset[,.N,keyid][order(-N)][1][,N]

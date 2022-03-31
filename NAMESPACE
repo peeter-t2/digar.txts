@@ -3,6 +3,7 @@
 export(do_subset_search)
 export(get_concordances)
 export(get_digar_overview)
+export(get_matching_files)
 export(get_subset_meta)
 import(data.table)
 import(stringr)
