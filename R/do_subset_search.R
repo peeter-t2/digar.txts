@@ -21,7 +21,11 @@ do_subset_search <- function(searchterm = "oskar kallas",searchfile = "oskarkall
   maxyear <- subset[,(max(year))]
   nissues <- nrow(subset)
   if(source == "sections"){
-  files <- subset[zippath_sections!="",unique(zippath_sections)]
+  #files <- subset[zippath_sections!="",unique(zippath_sections)]
+    if(searchtype=="text"){files <- subset[n_articles>0&zippath_sections!="",unique(zippath_sections)]}
+    if(searchtype=="lemmas"){files <- subset[n_articles_lemmas>0&zippath_sections!="",unique(zippath_sections)]}
+    if(length(files)==0){break}
+    
   collectionname <- "/gpfs/space/projects/digar_txt/text"
   filelist <- paste0(collectionname,"/text_sections/", files)
   if(searchtype=="lemmas"){  filelist <- paste0(collectionname,"/lemmas_sections/", files)}
@@ -33,7 +37,10 @@ do_subset_search <- function(searchterm = "oskar kallas",searchfile = "oskarkall
   }
 
   if(source == "pages"){
-  files <- subset[zippath_pages!="",unique(zippath_pages)]
+  #files <- subset[zippath_pages!="",unique(zippath_pages)]
+    if(searchtype=="text"){files <- subset[n_pages>0&zippath_pages!="",unique(zippath_pages)]}
+    if(searchtype=="lemmas"){files <- subset[n_pages_lemmas>0&zippath_pages!="",unique(zippath_pages)]}
+    if(length(files)==0){break}
   collectionname <- "/gpfs/space/projects/digar_txt/text"
   filelist <- paste0(collectionname,"/text_pages/", files)
   if(searchtype=="lemmas"){  filelist <- paste0(collectionname,"/lemmas_pages/", files)}
