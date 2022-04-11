@@ -14,7 +14,7 @@
 
 get_matching_files <- function (fileids_w_meta, outputfile = "file2.txt", 
                                 source = "sections", extracttype = "text") {
-  
+  fileids_w_meta <- data.table(fileids_w_meta)
   collectionname <- "/gpfs/space/projects/digar_txt/text"
   if(extracttype=="text"){
     if(source=="sections"){
